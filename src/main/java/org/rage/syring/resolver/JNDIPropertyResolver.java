@@ -1,4 +1,4 @@
-package org.rage.property.resolver;
+package org.rage.syring.resolver;
 
 import java.util.Properties;
 
@@ -7,9 +7,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.rage.property.annotation.JndiResolver;
-import org.rage.property.constant.Constants;
-import org.rage.property.resolver.util.ResolverHelper;
+import org.rage.syring.annotation.JndiResolver;
+import org.rage.syring.constant.Constants;
+import org.rage.syring.resolver.util.ResolverHelper;
 
 /**
  * @author hector.mendoza, alberto.saito

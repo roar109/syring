@@ -1,4 +1,4 @@
-package org.rage.property.annotation;
+package org.rage.syring.annotation;
 
 
 import java.lang.annotation.ElementType;
@@ -8,16 +8,17 @@ import java.lang.annotation.Target;
 
 import javax.inject.Qualifier;
 
+
 /**
- * JndiResolver represents ...
+ * FileResolver represents ...
  *
- * @since Aug 24, 2015
+ * @since Aug 18, 2015
  *
  */
 @Qualifier
 @Retention (RetentionPolicy.RUNTIME)
 @Target ({ElementType.FIELD, ElementType.TYPE})
-public @interface FileJndiResolver {
-    // Mark Interface
+public @interface FileResolver
+{
+   // Mark Interface
 }
-

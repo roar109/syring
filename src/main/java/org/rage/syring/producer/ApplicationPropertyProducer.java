@@ -1,4 +1,4 @@
-package org.rage.property.producer;
+package org.rage.syring.producer;
 
 import javax.enterprise.inject.spi.InjectionPoint;
 

@@ -1,4 +1,4 @@
-package org.rage.property.resolver;
+package org.rage.syring.resolver;
 
 /**
  * @author hector.mendoza

@@ -1,4 +1,4 @@
-package org.rage.property.annotation;
+package org.rage.syring.annotation;
 
 
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package org.rage.property.constant;
+package org.rage.syring.constant;
 
 
 /**

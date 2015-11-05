@@ -1,15 +1,15 @@
-package org.rage.property.producer;
+package org.rage.syring.producer;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
 
-import org.rage.property.annotation.ApplicationProperty;
-import org.rage.property.annotation.ApplicationProperty.Types;
-import org.rage.property.annotation.FileJndiResolver;
-import org.rage.property.annotation.FileResolver;
-import org.rage.property.annotation.JndiResolver;
-import org.rage.property.resolver.PropertyResolver;
+import org.rage.syring.annotation.ApplicationProperty;
+import org.rage.syring.annotation.FileJndiResolver;
+import org.rage.syring.annotation.FileResolver;
+import org.rage.syring.annotation.JndiResolver;
+import org.rage.syring.annotation.ApplicationProperty.Types;
+import org.rage.syring.resolver.PropertyResolver;
 
 /**
  * ApplicationPropertyProducer represents ...

@@ -1,11 +1,11 @@
-package org.rage.property.resolver.util;
+package org.rage.syring.resolver.util;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.rage.property.constant.Constants;
+import org.rage.syring.constant.Constants;
 
 /**
  * ResolverHelper represents ...

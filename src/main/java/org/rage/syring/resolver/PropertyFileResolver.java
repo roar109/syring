@@ -1,4 +1,4 @@
-package org.rage.property.resolver;
+package org.rage.syring.resolver;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,9 +9,9 @@ import java.util.Properties;
 
 import javax.inject.Inject;
 
-import org.rage.property.annotation.FileResolver;
-import org.rage.property.constant.Constants;
-import org.rage.property.resolver.util.ResolverHelper;
+import org.rage.syring.annotation.FileResolver;
+import org.rage.syring.constant.Constants;
+import org.rage.syring.resolver.util.ResolverHelper;
 
 /**
  * PropertyFileResolver represents
