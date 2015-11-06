@@ -1,5 +1,9 @@
 package org.rage.syring.resolver.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
@@ -37,8 +41,31 @@ public class ResolverHelper {
 			properties.load(is);
 			is.close();
 		} catch (final Exception e) {
-			System.err.println("ResolverHelper error: "+e.getMessage());
+			System.err.println("ResolverHelper error: " + e.getMessage());
 		}
 		return properties;
+	}
+
+	/**
+	 * Try to load properties from the given filename first from a complete path
+	 * then look for a file in the passed class loader.
+	 * 
+	 * @param fileName
+	 * @param cl
+	 * @param properties
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public void loadPropertiesFromFileName(final String fileName, final ClassLoader cl, final Properties properties)
+			throws FileNotFoundException, IOException {
+		final File d = new File(fileName);
+		if (d != null && d.exists()) {
+			properties.load(new FileInputStream(d));
+		} else {
+			final InputStream is = cl.getResourceAsStream(fileName);
+			if (is != null) {
+				properties.load(is);
+			}
+		}
 	}
 }

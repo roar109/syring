@@ -1,5 +1,6 @@
 package org.rage.syring.producer;
 
+import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
@@ -21,15 +22,15 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 
 	@Inject
 	@FileResolver
-	private PropertyResolver propertyFileResolver;
+	private Instance<PropertyResolver> propertyFileResolver;
 
 	@Inject
 	@JndiResolver
-	private PropertyResolver jndiPropertyResolver;
+	private Instance<PropertyResolver> jndiPropertyResolver;
 
 	@Inject
 	@FileJndiResolver
-	private PropertyResolver fileJndiResolver;
+	private Instance<PropertyResolver> fileJndiResolver;
 
 	/**
 	 * Represents getPropertyAsString
@@ -49,13 +50,13 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 		String value = null;
 
 		if (ApplicationProperty.Types.FILE == propertyType) {
-			value = propertyFileResolver.getProperty(propertyName, cl);
+			value = propertyFileResolver.get().getProperty(propertyName, cl);
 		} else if (ApplicationProperty.Types.SYSTEM == propertyType) {
 			value = System.getProperty(propertyName);
 		} else if (ApplicationProperty.Types.JNDI == propertyType) {
-			value = jndiPropertyResolver.getProperty(propertyName, cl);
+			value = jndiPropertyResolver.get().getProperty(propertyName, cl);
 		} else if (ApplicationProperty.Types.FILE_JNDI == propertyType) {
-			value = fileJndiResolver.getProperty(propertyName, cl);
+			value = fileJndiResolver.get().getProperty(propertyName, cl);
 		}
 
 		if ((value == null) || (propertyName.trim().length() == 0)) {
@@ -63,51 +64,6 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 		}
 
 		return value;
-	}
-
-	/**
-	 * @return the propertyFileResolver
-	 */
-	public PropertyResolver getPropertyFileResolver() {
-		return propertyFileResolver;
-	}
-
-	/**
-	 * @param value
-	 *            the propertyFileResolver to set
-	 */
-	public void setPropertyFileResolver(final PropertyResolver value) {
-		this.propertyFileResolver = value;
-	}
-
-	/**
-	 * @return the jndiPropertyResolver
-	 */
-	public PropertyResolver getJndiPropertyResolver() {
-		return jndiPropertyResolver;
-	}
-
-	/**
-	 * @param value
-	 *            the jndiPropertyResolver to set
-	 */
-	public void setJndiPropertyResolver(final PropertyResolver value) {
-		this.jndiPropertyResolver = value;
-	}
-
-	/**
-	 * @return the fileJndiResolver
-	 */
-	public PropertyResolver getFileJndiResolver() {
-		return fileJndiResolver;
-	}
-
-	/**
-	 * @param value
-	 *            the fileJndiResolver to set
-	 */
-	public void setFileJndiResolver(final PropertyResolver value) {
-		this.fileJndiResolver = value;
 	}
 
 }

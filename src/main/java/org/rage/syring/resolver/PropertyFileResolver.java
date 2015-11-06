@@ -23,7 +23,7 @@ import org.rage.syring.resolver.util.ResolverHelper;
 public class PropertyFileResolver implements PropertyResolver {
 
 	private final Map<String, String> propertiesMap = new HashMap<>();
-	private String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
+	private final String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
 	
 	@Inject
 	private ResolverHelper resolver;
@@ -45,7 +45,7 @@ public class PropertyFileResolver implements PropertyResolver {
 			if (propertiesVariableNames != null) {
 				final String[] variableNames = propertiesVariableNames.split(",");
 				for (final String variable : variableNames) {
-					properties.load(new FileInputStream(new File(System.getProperty(variable))));
+					resolver.loadPropertiesFromFileName(System.getProperty(variable), cl, properties);
 				}
 			} else {
 				tryToRetrieveFromFile(properties);
