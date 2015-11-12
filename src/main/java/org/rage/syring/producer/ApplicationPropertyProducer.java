@@ -18,5 +18,7 @@ public interface ApplicationPropertyProducer
     * @since Aug 20, 2015
     *
     */
-   public String getPropertyAsString (final InjectionPoint injectionPoint);
+   String getPropertyAsString (final InjectionPoint injectionPoint);
+   Integer getPropertyAsInteger (final InjectionPoint injectionPoint);
+   Long getPropertyAsLong(final InjectionPoint injectionPoint);
 }

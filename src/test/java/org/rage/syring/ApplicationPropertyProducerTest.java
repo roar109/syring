@@ -28,6 +28,14 @@ public class ApplicationPropertyProducerTest {
 	@ApplicationProperty(name="myproperty",type=ApplicationProperty.Types.FILE)
 	private String myProperty;
 	
+	@Inject
+	@ApplicationProperty(name="my.int.value",type=ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.INTEGER)
+	private Integer myIntValue;
+	
+	@Inject
+	@ApplicationProperty(name="my.long.value",type=ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.LONG)
+	private Long myLongValue;
+	
 	@Test
 	public void isNotNull() {
 		System.out.println("systemProperty="+systemProperty);
@@ -39,6 +47,18 @@ public class ApplicationPropertyProducerTest {
 		System.out.println("myProperty="+myProperty);
 		Assert.assertNotNull(myProperty);
 		Assert.assertEquals("myvalue", myProperty);
+	}
+	
+	@Test
+	public void testInteger(){
+		Assert.assertNotNull(myIntValue);
+		Assert.assertEquals(new Integer(100), myIntValue);
+	}
+	
+	@Test
+	public void testLong(){
+		Assert.assertNotNull(myLongValue);
+		Assert.assertEquals(new Long(10011234), myLongValue);
 	}
 	
 }

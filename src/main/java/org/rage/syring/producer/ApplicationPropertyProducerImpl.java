@@ -34,6 +34,7 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 
 	/**
 	 * Represents getPropertyAsString
+	 * Is used as a base from the other type methods
 	 *
 	 * @param injectionPoint
 	 * @return String
@@ -64,6 +65,32 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 		}
 
 		return value;
+	}
+
+	/**
+	 * Inject the property value to a Integer field
+	 * 
+	 * @param injectionPoint
+	 * @return Integer
+	 */
+	@Override
+	@Produces
+	@ApplicationProperty(name = "", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.INTEGER)
+	public Integer getPropertyAsInteger(final InjectionPoint injectionPoint) {
+		return Integer.parseInt(getPropertyAsString(injectionPoint));
+	}
+
+	/**
+	 * Inject the property value to a Long field
+	 * 
+	 * @param injectionPoint
+	 * @return Long
+	 */
+	@Override
+	@Produces
+	@ApplicationProperty(name = "", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.LONG)
+	public Long getPropertyAsLong(InjectionPoint injectionPoint) {
+		return Long.parseLong(getPropertyAsString(injectionPoint));
 	}
 
 }
