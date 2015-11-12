@@ -3,6 +3,7 @@ package org.rage.syring.resolver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -42,7 +43,7 @@ public class PropertyFileResolver implements PropertyResolver {
 			final String propertiesVariableNames = String
 					.valueOf(fileProperties.get(Constants.DEFAULT_VARIABLE_PROPERTY));
 
-			if (propertiesVariableNames != null) {
+			if (!"null".equals(propertiesVariableNames)) {
 				final String[] variableNames = propertiesVariableNames.split(",");
 				for (final String variable : variableNames) {
 					resolver.loadPropertiesFromFileName(System.getProperty(variable), cl, properties);
@@ -51,7 +52,7 @@ public class PropertyFileResolver implements PropertyResolver {
 				tryToRetrieveFromFile(properties);
 			}
 		} catch (final IOException e) {
-			System.err.println("Exception when try to load properties from file.");
+			System.err.println("Exception when try to load properties from file. Error message: "+e.getMessage());
 			tryToRetrieveFromFile(properties);
 		}
 
@@ -67,11 +68,10 @@ public class PropertyFileResolver implements PropertyResolver {
 	 * @param properties
 	 */
 	private void tryToRetrieveFromFile(Properties properties) {
-		try {
-			final File file = new File(propertyFile);
-			properties.load(new FileInputStream(file));
+		try (InputStream is = new FileInputStream(new File(propertyFile))){
+			properties.load(is);
 		} catch (final Exception ex) {
-			System.err.println("Could not load properties from properties file");
+			System.err.println("Could not load properties from properties file. Error message: "+ex.getMessage());
 		}
 	}
 

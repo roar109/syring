@@ -58,9 +58,11 @@ public class ResolverHelper {
 	 */
 	public void loadPropertiesFromFileName(final String fileName, final ClassLoader cl, final Properties properties)
 			throws FileNotFoundException, IOException {
-		final File d = new File(fileName);
-		if (d != null && d.exists()) {
-			properties.load(new FileInputStream(d));
+		final File file = new File(fileName);
+		if (file != null && file.exists()) {
+			try (InputStream is = new FileInputStream(file)){
+				properties.load(is);	
+			}
 		} else {
 			final InputStream is = cl.getResourceAsStream(fileName);
 			if (is != null) {

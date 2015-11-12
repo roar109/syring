@@ -32,7 +32,7 @@ public class JNDIPropertyResolver implements PropertyResolver {
 			// Create a context passing these properties
 			jndiContext = new InitialContext(properties);
 		} catch (final NamingException e) {
-			System.err.println("Error on cdi-property-resolver: " + e.getMessage());
+			System.err.println("Error on JNDIPropertyResolver.init with error message: " + e.getMessage());
 		}
 	}
 

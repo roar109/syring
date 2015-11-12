@@ -31,8 +31,9 @@ public class FileJndiPropertyResolver implements PropertyResolver {
 	 */
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
-		final String propertyValueFromFile = fileResolver.getProperty(key, cl);
 		String propertyValue = null;
+		final String propertyValueFromFile = fileResolver.getProperty(key, cl);
+		
 		if (propertyValueFromFile != null) {
 			propertyValue = jndiPropertyResolver.getProperty(propertyValueFromFile, cl);
 		}
