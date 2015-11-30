@@ -48,7 +48,7 @@ For a reference implementation you may check [this git project:](https://github.
 
 When you have something like this in your project properties file `data.jndi.url=server/sample/url` this will get the value from your properties file and then look for the jndi definition of it. Follow the same rules as the File and JNDI options.
 
-### Integer and Long values
+### Integer, Long and Double values
 
 By default the injection of values are Strings, however in some cases we need to insert numbers, so we add a `valueType` to the annotation since 1.1.0 version, an example of use is:
 
@@ -56,4 +56,4 @@ By default the injection of values are Strings, however in some cases we need to
     @ApplicationProperty (name = "example.int.property", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.INTEGER)
     private Integer systemInjectedInteger;
 
-Is going to extract the value from the source (type) and then parse to Integer or Long for a clean injection.
+Is going to extract the value from the source (type) as string and then parse to Long.
