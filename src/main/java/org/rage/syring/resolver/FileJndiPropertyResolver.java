@@ -1,25 +1,16 @@
 package org.rage.syring.resolver;
 
-import javax.inject.Inject;
-
-import org.rage.syring.annotation.FileJndiResolver;
-import org.rage.syring.annotation.FileResolver;
-import org.rage.syring.annotation.JndiResolver;
+import org.rage.syring.resolver.factory.ResolverFactory;
+import org.rage.syring.resolver.util.LoggerHelper;
 
 
 /**
  * @author hector.mendoza
  */
-@FileJndiResolver
 public class FileJndiPropertyResolver implements PropertyResolver {
 
-	@Inject
-	@FileResolver
-	private PropertyResolver fileResolver;
-
-	@Inject
-	@JndiResolver
-	private PropertyResolver jndiPropertyResolver;
+	private PropertyResolver fileResolver = ResolverFactory.instance().instanciateResolver(PropertyFileResolver.class);
+	private PropertyResolver jndiPropertyResolver = ResolverFactory.instance().instanciateResolver(JNDIPropertyResolver.class);
 
 	/**
 	 * Overrides getProperty
@@ -31,6 +22,7 @@ public class FileJndiPropertyResolver implements PropertyResolver {
 	 */
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
+		LoggerHelper.log("FileJndiPropertyResolver.init");
 		String propertyValue = null;
 		final String propertyValueFromFile = fileResolver.getProperty(key, cl);
 		

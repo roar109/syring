@@ -21,4 +21,5 @@ public interface ApplicationPropertyProducer
    String getPropertyAsString (final InjectionPoint injectionPoint);
    Integer getPropertyAsInteger (final InjectionPoint injectionPoint);
    Long getPropertyAsLong(final InjectionPoint injectionPoint);
+   Double getPropertyAsDouble(InjectionPoint injectionPoint);
 }

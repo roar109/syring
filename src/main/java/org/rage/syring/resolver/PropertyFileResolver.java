@@ -4,15 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
-import javax.inject.Inject;
-
-import org.rage.syring.annotation.FileResolver;
 import org.rage.syring.constant.Constants;
-import org.rage.syring.resolver.util.ResolverHelper;
+import org.rage.syring.resolver.util.LoggerHelper;
+import org.rage.syring.resolver.util.ResourceResolverHelper;
 
 /**
  * PropertyFileResolver represents
@@ -20,21 +17,19 @@ import org.rage.syring.resolver.util.ResolverHelper;
  * @since Aug 13, 2015
  *
  */
-@FileResolver
 public class PropertyFileResolver implements PropertyResolver {
 
-	private final Map<String, String> propertiesMap = new HashMap<>();
+	private final ConcurrentHashMap<String, String> propertiesMap = new ConcurrentHashMap<>();
 	private final String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
-	
-	@Inject
-	private ResolverHelper resolver;
+	private final ResourceResolverHelper resolver = ResourceResolverHelper.instance();
 
 	/**
 	 * Read properties from file and store them in the global Properties object.
 	 */
 	private void init(final ClassLoader cl) {
+		LoggerHelper.log("PropertyFileResolver.init");
 		propertiesMap.clear();
-		// if not try to load from system property
+
 		final Properties properties = new Properties();
 
 		try {
@@ -52,7 +47,7 @@ public class PropertyFileResolver implements PropertyResolver {
 				tryToRetrieveFromFile(properties);
 			}
 		} catch (final IOException e) {
-			System.err.println("Exception when try to load properties from file. Error message: "+e.getMessage());
+			LoggerHelper.logError(e);
 			tryToRetrieveFromFile(properties);
 		}
 
@@ -71,7 +66,7 @@ public class PropertyFileResolver implements PropertyResolver {
 		try (InputStream is = new FileInputStream(new File(propertyFile))){
 			properties.load(is);
 		} catch (final Exception ex) {
-			System.err.println("Could not load properties from properties file. Error message: "+ex.getMessage());
+			LoggerHelper.logError(ex);
 		}
 	}
 
@@ -96,6 +91,7 @@ public class PropertyFileResolver implements PropertyResolver {
 	 */
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
+		LoggerHelper.log("PropertyFileResolver.getProperty");
 		checkIfPropertiesAreInitialized(cl);
 		return propertiesMap.get(key);
 	}

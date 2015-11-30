@@ -49,7 +49,9 @@ public @interface ApplicationProperty {
 		/** Types for INTEGER */
 		INTEGER,
 		/** Types for LONG */
-		LONG;
+		LONG,
+		/** Types for DOUBLE */
+		DOUBLE;
 	}
 
 	/**

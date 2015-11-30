@@ -2,25 +2,21 @@ package org.rage.syring.resolver;
 
 import java.util.Properties;
 
-import javax.inject.Inject;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.rage.syring.annotation.JndiResolver;
 import org.rage.syring.constant.Constants;
-import org.rage.syring.resolver.util.ResolverHelper;
+import org.rage.syring.resolver.util.LoggerHelper;
+import org.rage.syring.resolver.util.ResourceResolverHelper;
 
 /**
  * @author hector.mendoza, alberto.saito
  */
-@JndiResolver
 public class JNDIPropertyResolver implements PropertyResolver {
 
 	private InitialContext jndiContext = null;
-
-	@Inject
-	private ResolverHelper resolver;
+	private final ResourceResolverHelper resolver = ResourceResolverHelper.instance();
 
 	private void init(final ClassLoader cl) {
 		try {
@@ -32,7 +28,7 @@ public class JNDIPropertyResolver implements PropertyResolver {
 			// Create a context passing these properties
 			jndiContext = new InitialContext(properties);
 		} catch (final NamingException e) {
-			System.err.println("Error on JNDIPropertyResolver.init with error message: " + e.getMessage());
+			LoggerHelper.logError(e);
 		}
 	}
 
