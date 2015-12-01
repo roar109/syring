@@ -5,14 +5,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.rage.syring.resolver.PropertyResolver;
 import org.rage.syring.resolver.util.LoggerHelper;
 
-public final class ResolverFactory {
+public final class PropertyResolverFactory {
 
-	private static final ResolverFactory instance = new ResolverFactory();
-	private final ConcurrentHashMap<String, PropertyResolver> cachePropResolverInstances = new ConcurrentHashMap<String, PropertyResolver>(5);
+	private static final PropertyResolverFactory instance = new PropertyResolverFactory();
+	private final ConcurrentHashMap<String, PropertyResolver> cachePropResolverInstances = new ConcurrentHashMap<String, PropertyResolver>(
+			5);
 
-	private ResolverFactory() {	}
+	private PropertyResolverFactory() {}
 
-	public static ResolverFactory instance() {
+	public static PropertyResolverFactory instance() {
 		return instance;
 	}
 

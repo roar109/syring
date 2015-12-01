@@ -9,7 +9,7 @@ import org.rage.syring.resolver.FileJndiPropertyResolver;
 import org.rage.syring.resolver.JNDIPropertyResolver;
 import org.rage.syring.resolver.PropertyFileResolver;
 import org.rage.syring.resolver.PropertyResolver;
-import org.rage.syring.resolver.factory.ResolverFactory;
+import org.rage.syring.resolver.factory.PropertyResolverFactory;
 import org.rage.syring.resolver.util.LoggerHelper;
 
 /**
@@ -20,9 +20,9 @@ import org.rage.syring.resolver.util.LoggerHelper;
  */
 public class ApplicationPropertyProducerImpl implements ApplicationPropertyProducer {
 
-	private PropertyResolver propertyFileResolver = ResolverFactory.instance().instanciateResolver(PropertyFileResolver.class);
-	private PropertyResolver jndiPropertyResolver = ResolverFactory.instance().instanciateResolver(JNDIPropertyResolver.class);
-	private PropertyResolver fileJndiResolver = ResolverFactory.instance().instanciateResolver(FileJndiPropertyResolver.class);
+	private PropertyResolver propertyFileResolver = PropertyResolverFactory.instance().instanciateResolver(PropertyFileResolver.class);
+	private PropertyResolver jndiPropertyResolver = PropertyResolverFactory.instance().instanciateResolver(JNDIPropertyResolver.class);
+	private PropertyResolver fileJndiResolver = PropertyResolverFactory.instance().instanciateResolver(FileJndiPropertyResolver.class);
 
 	public ApplicationPropertyProducerImpl(){
 		LoggerHelper.log("ApplicationPropertyProducerImpl.new");

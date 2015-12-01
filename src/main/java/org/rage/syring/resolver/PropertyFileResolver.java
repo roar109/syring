@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.rage.syring.constant.Constants;
 import org.rage.syring.resolver.util.LoggerHelper;
-import org.rage.syring.resolver.util.ResourceResolverHelper;
 
 /**
  * PropertyFileResolver represents
@@ -17,12 +16,37 @@ import org.rage.syring.resolver.util.ResourceResolverHelper;
  * @since Aug 13, 2015
  *
  */
-public class PropertyFileResolver implements PropertyResolver {
+public class PropertyFileResolver extends AbstractProvider implements PropertyResolver {
 
 	private final ConcurrentHashMap<String, String> propertiesMap = new ConcurrentHashMap<>();
 	private final String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
-	private final ResourceResolverHelper resolver = ResourceResolverHelper.instance();
 
+	/**
+	 * Represents getProperty
+	 *
+	 * @param key
+	 * @return String
+	 * @since Aug 13, 2015
+	 *
+	 */
+	@Override
+	public String getProperty(final String key, final ClassLoader cl) {
+		LoggerHelper.log("PropertyFileResolver.getProperty");
+		checkIfPropertiesAreInitialized(cl);
+		return propertiesMap.get(key);
+	}
+	
+	/**
+	 * Validate that the properties loading ocure only 1 time - or only if the
+	 * file have properties.
+	 *
+	 */
+	private void checkIfPropertiesAreInitialized(ClassLoader cl) {
+		if (propertiesMap.size() == 0) {
+			init(cl);
+		}
+	}
+	
 	/**
 	 * Read properties from file and store them in the global Properties object.
 	 */
@@ -33,7 +57,7 @@ public class PropertyFileResolver implements PropertyResolver {
 		final Properties properties = new Properties();
 
 		try {
-			final Properties fileProperties = resolver.readDefaultPropertiesFile(cl);
+			final Properties fileProperties = getResourceResolverHelper().readDefaultPropertiesFile(cl);
 
 			final String propertiesVariableNames = String
 					.valueOf(fileProperties.get(Constants.DEFAULT_VARIABLE_PROPERTY));
@@ -41,7 +65,7 @@ public class PropertyFileResolver implements PropertyResolver {
 			if (!"null".equals(propertiesVariableNames)) {
 				final String[] variableNames = propertiesVariableNames.split(",");
 				for (final String variable : variableNames) {
-					resolver.loadPropertiesFromFileName(System.getProperty(variable), cl, properties);
+					getResourceResolverHelper().loadPropertiesFromFileName(System.getProperty(variable), cl, properties);
 				}
 			} else {
 				tryToRetrieveFromFile(properties);
@@ -63,36 +87,11 @@ public class PropertyFileResolver implements PropertyResolver {
 	 * @param properties
 	 */
 	private void tryToRetrieveFromFile(Properties properties) {
-		try (InputStream is = new FileInputStream(new File(propertyFile))){
+		try (InputStream is = new FileInputStream(new File(propertyFile))) {
 			properties.load(is);
 		} catch (final Exception ex) {
 			LoggerHelper.logError(ex);
 		}
 	}
 
-	/**
-	 * Validate that the properties loading ocure only 1 time - or only if the
-	 * file have properties.
-	 *
-	 */
-	private void checkIfPropertiesAreInitialized(ClassLoader cl) {
-		if (propertiesMap.size() == 0) {
-			init(cl);
-		}
-	}
-
-	/**
-	 * Represents getProperty
-	 *
-	 * @param key
-	 * @return String
-	 * @since Aug 13, 2015
-	 *
-	 */
-	@Override
-	public String getProperty(final String key, final ClassLoader cl) {
-		LoggerHelper.log("PropertyFileResolver.getProperty");
-		checkIfPropertiesAreInitialized(cl);
-		return propertiesMap.get(key);
-	}
 }

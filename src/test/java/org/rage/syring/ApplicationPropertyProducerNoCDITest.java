@@ -63,22 +63,33 @@ public class ApplicationPropertyProducerNoCDITest extends EasyMockSupport {
 	public void testDoubleVersion() {
 		mockActions("java.specification.version", ValueType.DOUBLE, null);
 		replayAll();
-		final Double osVersion = appPropertyProducer.getPropertyAsDouble(injectionPoint);
+		final Double javaVersion = appPropertyProducer.getPropertyAsDouble(injectionPoint);
 		verifyAll();
 		
-		Assert.assertNotNull(osVersion);
-		Assert.assertTrue(osVersion > 1.5);
+		Assert.assertNotNull(javaVersion);
+		Assert.assertTrue(javaVersion > 1.5);
 	}
 	
 	@Test
 	public void testIntegerVersion() {
 		mockActions("my.int.value", ValueType.INTEGER, Types.FILE);
 		replayAll();
-		final Integer osVersion = appPropertyProducer.getPropertyAsInteger(injectionPoint);
+		final Integer randomIntNumber = appPropertyProducer.getPropertyAsInteger(injectionPoint);
 		verifyAll();
 		
-		Assert.assertNotNull(osVersion);
-		Assert.assertTrue(osVersion > 1.5);
+		Assert.assertNotNull(randomIntNumber);
+		Assert.assertTrue(randomIntNumber > 99);
+	}
+	
+	@Test
+	public void testLong() {
+		mockActions("my.long.value", ValueType.LONG, Types.FILE);
+		replayAll();
+		final Long randomLongNumber = appPropertyProducer.getPropertyAsLong(injectionPoint);
+		verifyAll();
+		
+		Assert.assertNotNull(randomLongNumber);
+		Assert.assertTrue(randomLongNumber > 10011232);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
