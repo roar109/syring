@@ -12,12 +12,20 @@ import java.util.Properties;
 import org.rage.syring.constant.Constants;
 
 /**
- * ResolverHelper represents ...
+ * ResourceResolverHelper represents ...
  *
  * @since Aug 26, 2015
  *
  */
-public class ResolverHelper {
+public class ResourceResolverHelper {
+	
+	private final static ResourceResolverHelper instance = new ResourceResolverHelper();
+	
+	private ResourceResolverHelper(){}
+	
+	public static ResourceResolverHelper instance(){
+		return instance;
+	}
 
 	/**
 	 * 
@@ -27,21 +35,20 @@ public class ResolverHelper {
 	 */
 	public Properties readDefaultPropertiesFile(ClassLoader cl) {
 		final Properties properties = new Properties();
-
+		LoggerHelper.log("ResourceResolverHelper.readDefaultPropertiesFile");
 		try {
 			URL url = null;
-			final Enumeration<URL> em = cl.getResources(Constants.CDI_PROP_FILENAME);
 			// Get all the resources, if you have shared dependencies it will
 			// take as many as you have.
 			// TODO Need to use a better solution for this
-			while (em.hasMoreElements()) {
-				url = em.nextElement();
+			for (Enumeration<URL> e = cl.getResources(Constants.CDI_PROP_FILENAME); e.hasMoreElements();) {
+				url = e.nextElement();
 			}
-			final InputStream is = url.openStream();
-			properties.load(is);
-			is.close();
+			try(InputStream is = url.openStream()){
+				properties.load(is);
+			}			
 		} catch (final Exception e) {
-			System.err.println("ResolverHelper error: " + e.getMessage());
+			LoggerHelper.logError(e);
 		}
 		return properties;
 	}
@@ -58,9 +65,11 @@ public class ResolverHelper {
 	 */
 	public void loadPropertiesFromFileName(final String fileName, final ClassLoader cl, final Properties properties)
 			throws FileNotFoundException, IOException {
-		final File d = new File(fileName);
-		if (d != null && d.exists()) {
-			properties.load(new FileInputStream(d));
+		final File file = new File(fileName);
+		if (file != null && file.exists()) {
+			try (InputStream is = new FileInputStream(file)){
+				properties.load(is);	
+			}
 		} else {
 			final InputStream is = cl.getResourceAsStream(fileName);
 			if (is != null) {

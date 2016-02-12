@@ -1,25 +1,12 @@
 package org.rage.syring.resolver;
 
-import javax.inject.Inject;
-
-import org.rage.syring.annotation.FileJndiResolver;
-import org.rage.syring.annotation.FileResolver;
-import org.rage.syring.annotation.JndiResolver;
+import org.rage.syring.resolver.util.LoggerHelper;
 
 
 /**
  * @author hector.mendoza
  */
-@FileJndiResolver
-public class FileJndiPropertyResolver implements PropertyResolver {
-
-	@Inject
-	@FileResolver
-	private PropertyResolver fileResolver;
-
-	@Inject
-	@JndiResolver
-	private PropertyResolver jndiPropertyResolver;
+public class FileJndiPropertyResolver extends AbstractProvider implements PropertyResolver {
 
 	/**
 	 * Overrides getProperty
@@ -31,42 +18,14 @@ public class FileJndiPropertyResolver implements PropertyResolver {
 	 */
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
-		final String propertyValueFromFile = fileResolver.getProperty(key, cl);
+		LoggerHelper.log("FileJndiPropertyResolver.init");
 		String propertyValue = null;
+		final String propertyValueFromFile = getPropertyFileResolver().getProperty(key, cl);
+		
 		if (propertyValueFromFile != null) {
-			propertyValue = jndiPropertyResolver.getProperty(propertyValueFromFile, cl);
+			propertyValue = getJNDIResolver().getProperty(propertyValueFromFile, cl);
 		}
 		return propertyValue;
-	}
-
-	/**
-	 * @return the fileResolver
-	 */
-	public PropertyResolver getFileResolver() {
-		return fileResolver;
-	}
-
-	/**
-	 * @param value
-	 *            the fileResolver to set
-	 */
-	public void setFileResolver(final PropertyResolver value) {
-		this.fileResolver = value;
-	}
-
-	/**
-	 * @return the jndiPropertyResolver
-	 */
-	public PropertyResolver getJndiPropertyResolver() {
-		return jndiPropertyResolver;
-	}
-
-	/**
-	 * @param value
-	 *            the jndiPropertyResolver to set
-	 */
-	public void setJndiPropertyResolver(final PropertyResolver value) {
-		this.jndiPropertyResolver = value;
 	}
 
 }
