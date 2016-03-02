@@ -66,32 +66,11 @@
 					</classpathDependencyExcludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<!-- Releasing: mvn release:prepare mvn release:perform -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<releaseProfiles>release-sign-artifacts</releaseProfiles>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+	
 	<url>https://github.com/roar109/syring</url>
+	
 	<scm>
 		<url>https://github.com/roar109/syring.git</url>
 	</scm>
@@ -120,4 +99,27 @@
 			<email>roar109@gmail.com</email>
 		</developer>
 	</developers>
+
+	<profiles>
+		<profile>
+			<id>deploy-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
