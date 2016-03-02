@@ -6,7 +6,7 @@ If you are using Maven as your dependency manager you can include this dependenc
       <dependency>
          <groupId>org.rage</groupId>
          <artifactId>syring</artifactId>
-         <version>1.1.0-SNAPSHOT</version>
+         <version>1.1.0</version>
       </dependency>
       
 Also, we need to create a file `prop-config.properties` in case you will use FILE/JNDI options and put it inside the resources folder in order to be available to the component class loader resource locator. In this file we need to define these 3 properties:
