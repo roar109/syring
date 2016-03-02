@@ -1,4 +1,4 @@
-package org.rage.syring.resolver;
+package com.github.roar109.syring.resolver;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.rage.syring.constant.Constants;
-import org.rage.syring.resolver.util.LoggerHelper;
+import com.github.roar109.syring.constant.Constants;
+import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 /**
  * PropertyFileResolver represents

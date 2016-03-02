@@ -1,7 +1,7 @@
-package org.rage.syring.resolver;
+package com.github.roar109.syring.resolver;
 
-import org.rage.syring.resolver.factory.PropertyResolverFactory;
-import org.rage.syring.resolver.util.ResourceResolverHelper;
+import com.github.roar109.syring.resolver.factory.PropertyResolverFactory;
+import com.github.roar109.syring.resolver.util.ResourceResolverHelper;
 
 public abstract class AbstractProvider {
 	

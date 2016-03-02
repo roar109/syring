@@ -1,10 +1,10 @@
-package org.rage.syring.util;
+package com.github.roar109.syring.util;
 
 import java.lang.annotation.Annotation;
 
-import org.rage.syring.annotation.ApplicationProperty;
-import org.rage.syring.annotation.ApplicationProperty.ValueType;
-import org.rage.syring.annotation.ApplicationProperty.Types;
+import com.github.roar109.syring.annotation.ApplicationProperty;
+import com.github.roar109.syring.annotation.ApplicationProperty.Types;
+import com.github.roar109.syring.annotation.ApplicationProperty.ValueType;
 
 public class ObjectFactory {
 

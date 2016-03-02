@@ -1,4 +1,4 @@
-package org.rage.syring;
+package com.github.roar109.syring;
 
 import java.lang.reflect.Member;
 
@@ -12,12 +12,13 @@ import org.easymock.Mock;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
-import org.rage.syring.annotation.ApplicationProperty.Types;
-import org.rage.syring.annotation.ApplicationProperty.ValueType;
-import org.rage.syring.producer.ApplicationPropertyProducer;
-import org.rage.syring.producer.ApplicationPropertyProducerImpl;
-import org.rage.syring.util.ObjectFactory;
-import org.rage.syring.util.ObjectFactory.ApplicationPropertyBuilder;
+
+import com.github.roar109.syring.annotation.ApplicationProperty.Types;
+import com.github.roar109.syring.annotation.ApplicationProperty.ValueType;
+import com.github.roar109.syring.producer.ApplicationPropertyProducer;
+import com.github.roar109.syring.producer.ApplicationPropertyProducerImpl;
+import com.github.roar109.syring.util.ObjectFactory;
+import com.github.roar109.syring.util.ObjectFactory.ApplicationPropertyBuilder;
 
 public class ApplicationPropertyProducerNoCDITest extends EasyMockSupport {
 	

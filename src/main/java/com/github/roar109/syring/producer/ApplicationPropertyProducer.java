@@ -1,4 +1,4 @@
-package org.rage.syring.producer;
+package com.github.roar109.syring.producer;
 
 import javax.enterprise.inject.spi.InjectionPoint;
 

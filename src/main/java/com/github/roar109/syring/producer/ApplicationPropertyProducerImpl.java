@@ -1,16 +1,16 @@
-package org.rage.syring.producer;
+package com.github.roar109.syring.producer;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
-import org.rage.syring.annotation.ApplicationProperty;
-import org.rage.syring.annotation.ApplicationProperty.Types;
-import org.rage.syring.resolver.FileJndiPropertyResolver;
-import org.rage.syring.resolver.JNDIPropertyResolver;
-import org.rage.syring.resolver.PropertyFileResolver;
-import org.rage.syring.resolver.PropertyResolver;
-import org.rage.syring.resolver.factory.PropertyResolverFactory;
-import org.rage.syring.resolver.util.LoggerHelper;
+import com.github.roar109.syring.annotation.ApplicationProperty;
+import com.github.roar109.syring.annotation.ApplicationProperty.Types;
+import com.github.roar109.syring.resolver.FileJndiPropertyResolver;
+import com.github.roar109.syring.resolver.JNDIPropertyResolver;
+import com.github.roar109.syring.resolver.PropertyFileResolver;
+import com.github.roar109.syring.resolver.PropertyResolver;
+import com.github.roar109.syring.resolver.factory.PropertyResolverFactory;
+import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 /**
  * ApplicationPropertyProducer represents ...

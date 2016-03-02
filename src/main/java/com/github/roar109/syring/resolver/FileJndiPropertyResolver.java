@@ -1,6 +1,6 @@
-package org.rage.syring.resolver;
+package com.github.roar109.syring.resolver;
 
-import org.rage.syring.resolver.util.LoggerHelper;
+import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 
 /**

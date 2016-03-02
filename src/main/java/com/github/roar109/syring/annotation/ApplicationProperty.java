@@ -1,4 +1,4 @@
-package org.rage.syring.annotation;
+package com.github.roar109.syring.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

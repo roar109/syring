@@ -1,4 +1,4 @@
-package org.rage.syring.resolver.util;
+package com.github.roar109.syring.resolver.util;
 
 public class LoggerHelper {
 
