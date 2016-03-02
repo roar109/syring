@@ -81,6 +81,13 @@
 			<id>aws-release</id>
 			<name>AWS Release Repository</name>
 			<url>s3://m2-repo/release</url>
+			<uniqueVersion>false</uniqueVersion>
 		</repository>
+		<snapshotRepository>
+			<id>aws-release</id>
+			<name>AWS Release Repository</name>
+			<url>s3://m2-repo/release</url>
+			<uniqueVersion>false</uniqueVersion>
+  		</snapshotRepository>
 	</distributionManagement>
 </project>
