@@ -67,5 +67,20 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>5.0.0.RELEASE</version>
+			</extension>
+		</extensions>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>aws-release</id>
+			<name>AWS Release Repository</name>
+			<url>s3://m2-repo/release</url>
+		</repository>
+	</distributionManagement>
 </project>
