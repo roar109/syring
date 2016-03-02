@@ -1,9 +1,9 @@
-package org.rage.syring.resolver.factory;
+package com.github.roar109.syring.resolver.factory;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.rage.syring.resolver.PropertyResolver;
-import org.rage.syring.resolver.util.LoggerHelper;
+import com.github.roar109.syring.resolver.PropertyResolver;
+import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 public final class PropertyResolverFactory {
 

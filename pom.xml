@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.rage</groupId>
+	<groupId>com.github.roar109</groupId>
 	<artifactId>syring</artifactId>
-	<version>1.1.0</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>syring</name>
@@ -67,27 +67,9 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<extensions>
-			<extension>
-				<groupId>org.springframework.build</groupId>
-				<artifactId>aws-maven</artifactId>
-				<version>5.0.0.RELEASE</version>
-			</extension>
-		</extensions>
 	</build>
-
-	<distributionManagement>
-		<repository>
-			<id>aws-release</id>
-			<name>AWS Release Repository</name>
-			<url>s3://m2-repo/release</url>
-			<uniqueVersion>false</uniqueVersion>
-		</repository>
-		<snapshotRepository>
-			<id>aws-release</id>
-			<name>AWS Release Repository</name>
-			<url>s3://m2-repo/release</url>
-			<uniqueVersion>true</uniqueVersion>
-  		</snapshotRepository>
-	</distributionManagement>
+	<url>https://github.com/roar109/syring</url>
+	<scm>
+		<url>https://github.com/roar109/syring.git</url>
+	</scm>
 </project>

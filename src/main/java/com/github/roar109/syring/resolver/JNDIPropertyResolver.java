@@ -1,4 +1,4 @@
-package org.rage.syring.resolver;
+package com.github.roar109.syring.resolver;
 
 import java.util.Properties;
 
@@ -6,8 +6,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.rage.syring.constant.Constants;
-import org.rage.syring.resolver.util.LoggerHelper;
+import com.github.roar109.syring.constant.Constants;
+import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 /**
  * @author hector.mendoza, alberto.saito

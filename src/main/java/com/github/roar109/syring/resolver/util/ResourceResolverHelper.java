@@ -1,4 +1,4 @@
-package org.rage.syring.resolver.util;
+package com.github.roar109.syring.resolver.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.rage.syring.constant.Constants;
+import com.github.roar109.syring.constant.Constants;
 
 /**
  * ResourceResolverHelper represents ...

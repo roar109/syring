@@ -1,4 +1,4 @@
-package org.rage.syring.resolver;
+package com.github.roar109.syring.resolver;
 
 /**
  * @author hector.mendoza

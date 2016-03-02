@@ -1,4 +1,4 @@
-package org.rage.syring;
+package com.github.roar109.syring;
 
 import javax.inject.Inject;
 
@@ -7,8 +7,9 @@ import org.jglue.cdiunit.CdiRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.rage.syring.annotation.ApplicationProperty;
-import org.rage.syring.producer.ApplicationPropertyProducerImpl;
+
+import com.github.roar109.syring.annotation.ApplicationProperty;
+import com.github.roar109.syring.producer.ApplicationPropertyProducerImpl;
 
 @RunWith(CdiRunner.class)
 @AdditionalClasses({ ApplicationPropertyProducerImpl.class })

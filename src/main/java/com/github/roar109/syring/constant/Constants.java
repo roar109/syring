@@ -1,4 +1,4 @@
-package org.rage.syring.constant;
+package com.github.roar109.syring.constant;
 
 
 /**
