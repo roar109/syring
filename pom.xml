@@ -67,11 +67,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			     <!--
-			     Releasing:
-			         mvn release:prepare
-			         mvn release:perform
-			      -->
+				<!-- Releasing: mvn release:prepare mvn release:perform -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.2</version>
@@ -80,13 +76,26 @@
 					<releaseProfiles>release-sign-artifacts</releaseProfiles>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<url>https://github.com/roar109/syring</url>
 	<scm>
 		<url>https://github.com/roar109/syring.git</url>
 	</scm>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
@@ -94,4 +103,21 @@
 			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 	</distributionManagement>
+
+	<description>Component to inject properties into a CDI application</description>
+
+	<licenses>
+		<license>
+			<name>The MIT License (MIT)</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>hmendoza</id>
+			<name>Hector Mendoza</name>
+			<email>roar109@gmail.com</email>
+		</developer>
+	</developers>
 </project>
