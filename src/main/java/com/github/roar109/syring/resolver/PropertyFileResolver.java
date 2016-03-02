@@ -21,14 +21,6 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 	private final ConcurrentHashMap<String, String> propertiesMap = new ConcurrentHashMap<>();
 	private final String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
 
-	/**
-	 * Represents getProperty
-	 *
-	 * @param key
-	 * @return String
-	 * @since Aug 13, 2015
-	 *
-	 */
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
 		LoggerHelper.log("PropertyFileResolver.getProperty");
@@ -39,7 +31,6 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 	/**
 	 * Validate that the properties loading ocure only 1 time - or only if the
 	 * file have properties.
-	 *
 	 */
 	private void checkIfPropertiesAreInitialized(ClassLoader cl) {
 		if (propertiesMap.size() == 0) {
@@ -84,7 +75,6 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 	 * Try to retrieve properties from a default variable This variable has the
 	 * path to a valid properties file.
 	 * 
-	 * @param properties
 	 */
 	private void tryToRetrieveFromFile(Properties properties) {
 		try (InputStream is = new FileInputStream(new File(propertyFile))) {

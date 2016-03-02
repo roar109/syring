@@ -13,9 +13,6 @@ import com.github.roar109.syring.constant.Constants;
 
 /**
  * ResourceResolverHelper represents ...
- *
- * @since Aug 26, 2015
- *
  */
 public class ResourceResolverHelper {
 	
@@ -27,12 +24,6 @@ public class ResourceResolverHelper {
 		return instance;
 	}
 
-	/**
-	 * 
-	 * @param cl
-	 * @return properties from the default file.
-	 * 
-	 */
 	public Properties readDefaultPropertiesFile(ClassLoader cl) {
 		final Properties properties = new Properties();
 		LoggerHelper.log("ResourceResolverHelper.readDefaultPropertiesFile");
@@ -56,12 +47,6 @@ public class ResourceResolverHelper {
 	/**
 	 * Try to load properties from the given filename first from a complete path
 	 * then look for a file in the passed class loader.
-	 * 
-	 * @param fileName
-	 * @param cl
-	 * @param properties
-	 * @throws FileNotFoundException
-	 * @throws IOException
 	 */
 	public void loadPropertiesFromFileName(final String fileName, final ClassLoader cl, final Properties properties)
 			throws FileNotFoundException, IOException {

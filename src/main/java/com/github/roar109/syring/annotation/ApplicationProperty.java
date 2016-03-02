@@ -10,9 +10,6 @@ import javax.inject.Qualifier;
 
 /**
  * ApplicationProperty represents ...
- *
- * @since Aug 13, 2015
- *
  */
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
@@ -21,8 +18,6 @@ public @interface ApplicationProperty {
 
 	/**
 	 * Types of property retrievals available
-	 *
-	 * @since Aug 13, 2015
 	 *
 	 */
 	enum Types {
@@ -40,8 +35,6 @@ public @interface ApplicationProperty {
 	/**
 	 * Types of the property to inject
 	 * 
-	 * @since Nov 12, 2015
-	 *
 	 */
 	enum ValueType {
 		/** Types for STRING */

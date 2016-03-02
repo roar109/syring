@@ -3,9 +3,6 @@ package com.github.roar109.syring.constant;
 
 /**
  * Constants
- *
- * @since Aug 20, 2015
- *
  */
 public class Constants{
    public static final String DEFAULT_PROJECT_FILE_NAME_PROPERTY = "project.properties.file.path";
