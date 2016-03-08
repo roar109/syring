@@ -98,6 +98,11 @@
 			<name>Hector Mendoza</name>
 			<email>roar109@gmail.com</email>
 		</developer>
+		<developer>
+			<id>asaito</id>
+			<name>Alberto Saito</name>
+			<email>nobuji.saito@gmail.com</email>
+		</developer>
 	</developers>
 
 	<profiles>
