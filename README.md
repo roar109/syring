@@ -1,7 +1,7 @@
 [![Build Status](https://drone.io/github.com/roar109/syring/status.png)](#)
 
 ### How to include it in your project
-If you are using Maven as your dependency manager you can include this dependency (is not in maven central repository, you need to download the project and compile it):
+If you are using Maven as your dependency manager you can include this dependency:
 
       <dependency>
          <groupId>com.github.roar109</groupId>
