@@ -57,7 +57,7 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 		}
 
 		if ((value == null) || (propertyName.trim().length() == 0)) {
-			throw new IllegalArgumentException("No property found with name " + propertyName);
+			System.err.println("No property found with name " + propertyName);
 		}
 
 		return value;
