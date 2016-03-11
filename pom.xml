@@ -4,7 +4,7 @@
 
 	<groupId>com.github.roar109</groupId>
 	<artifactId>syring</artifactId>
-	<version>1.0.1</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>syring</name>

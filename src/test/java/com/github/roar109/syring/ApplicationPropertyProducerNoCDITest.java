@@ -42,11 +42,12 @@ public class ApplicationPropertyProducerNoCDITest extends EasyMockSupport {
 		System.setProperty("my.properties.file.path", "mypropsfile.properties");
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testNoPropertyFound() {
 		mockActions("random", null, null);
 		replayAll();
-		appPropertyProducer.getPropertyAsString(injectionPoint);
+		String value = appPropertyProducer.getPropertyAsString(injectionPoint);
+		Assert.assertNull(value);
 		verifyAll();
 	}
 

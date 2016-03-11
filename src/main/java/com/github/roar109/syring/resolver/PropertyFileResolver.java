@@ -23,7 +23,7 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 
 	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
-		LoggerHelper.log("PropertyFileResolver.getProperty");
+		LoggerHelper.log("PropertyFileResolver.getProperty("+key+")");
 		checkIfPropertiesAreInitialized(cl);
 		return propertiesMap.get(key);
 	}
