@@ -21,7 +21,6 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 	private final ConcurrentHashMap<String, String> propertiesMap = new ConcurrentHashMap<>();
 	private final String propertyFile = System.getProperty(Constants.DEFAULT_PROJECT_FILE_NAME_PROPERTY);
 
-	@Override
 	public String getProperty(final String key, final ClassLoader cl) {
 		LoggerHelper.log("PropertyFileResolver.getProperty("+key+")");
 		checkIfPropertiesAreInitialized(cl);
@@ -84,4 +83,7 @@ public class PropertyFileResolver extends AbstractProvider implements PropertyRe
 		}
 	}
 
+	public ConcurrentHashMap<String, String> getPropertiesMap(){
+		return this.propertiesMap;
+	}
 }

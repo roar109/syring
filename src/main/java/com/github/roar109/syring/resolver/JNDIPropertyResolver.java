@@ -1,6 +1,7 @@
 package com.github.roar109.syring.resolver;
 
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -14,11 +15,19 @@ import com.github.roar109.syring.resolver.util.LoggerHelper;
  */
 public class JNDIPropertyResolver  extends AbstractProvider implements PropertyResolver {
 	
-	@Override
+	private final ConcurrentHashMap<String, String> jndiValuesCache = new ConcurrentHashMap<>();
+	
 	public String getProperty(final String key, final ClassLoader cl) {
+		LoggerHelper.log("JNDIPropertyResolver.getProperty("+key+")");
+		if(jndiValuesCache.containsKey(key)){
+			return jndiValuesCache.get(key);
+		}
 		try {
 			final InitialContext jndiContext = configureAndInstantiateInitialContext(cl);
-			return (String) jndiContext.lookup(key);
+			final String value = (String) jndiContext.lookup(key);
+			jndiValuesCache.put(key, value);
+			LoggerHelper.log("JNDIPropertyResolver.getProperty("+key+") Adding value "+value);
+			return value;
 		} catch (final NamingException e) {
 			throw new IllegalStateException("JNDI provider not configured properly");
 		}
@@ -57,6 +66,10 @@ public class JNDIPropertyResolver  extends AbstractProvider implements PropertyR
 		}
 
 		return value;
+	}
+	
+	public ConcurrentHashMap<String, String> getJndiValuesCache(){
+		return this.jndiValuesCache;
 	}
 
 }
