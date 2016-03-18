@@ -9,8 +9,8 @@ import javax.enterprise.util.Nonbinding;
 import javax.inject.Qualifier;
 
 /**
- * ApplicationProperty represents ...
- */
+ * @author hector.mendoza, alberto.saito
+ * */
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
@@ -18,44 +18,22 @@ public @interface ApplicationProperty {
 
 	/**
 	 * Types of property retrievals available
-	 *
 	 */
 	enum Types {
-		/** Types for FILE */
-		FILE,
-		/** Types for SYSTEM */
-		SYSTEM,
-		/** Types for JNDI */
-		JNDI,
-		/** Types for FILE + JNDI */
-		FILE_JNDI;
+		FILE, SYSTEM, JNDI, FILE_JNDI;
 
 	}
 
 	/**
 	 * Types of the property to inject
-	 * 
 	 */
 	enum ValueType {
-		/** Types for STRING */
-		STRING, 
-		/** Types for INTEGER */
-		INTEGER,
-		/** Types for LONG */
-		LONG,
-		/** Types for DOUBLE */
-		DOUBLE;
+		STRING, INTEGER, LONG, DOUBLE;
 	}
 
-	/**
-	 * no default meaning a value is mandatory
-	 */
 	@Nonbinding
 	String name();
 
-	/**
-	 * no default meaning a value is mandatory
-	 */
 	@Nonbinding
 	Types type();
 

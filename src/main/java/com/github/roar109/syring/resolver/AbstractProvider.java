@@ -3,6 +3,9 @@ package com.github.roar109.syring.resolver;
 import com.github.roar109.syring.resolver.factory.PropertyResolverFactory;
 import com.github.roar109.syring.resolver.util.ResourceResolverHelper;
 
+/**
+ * @author hector.mendoza
+ * */
 public abstract class AbstractProvider {
 	
 	protected PropertyResolver getFileJndiResolver(){

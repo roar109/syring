@@ -12,7 +12,7 @@ import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 /**
  * PropertyFileResolver represents
- *
+ * @author hector.mendoza, alberto.saito
  * @since Aug 13, 2015
  *
  */

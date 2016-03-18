@@ -1,5 +1,8 @@
 package com.github.roar109.syring.resolver.util;
 
+/**
+ * @author hector.mendoza
+ * */
 public class LoggerHelper {
 
 	private static final Boolean debugEnabled = System.getProperty("syring.debug.log.enabled") != null;

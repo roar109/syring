@@ -13,8 +13,8 @@ import com.github.roar109.syring.resolver.factory.PropertyResolverFactory;
 import com.github.roar109.syring.resolver.util.LoggerHelper;
 
 /**
- * ApplicationPropertyProducer represents ...
- *
+ * ApplicationPropertyProducerImpl
+ * @author hector.mendoza, alberto.saito
  * @since Aug 13, 2015
  *
  */
@@ -69,7 +69,6 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 	 * @param injectionPoint
 	 * @return Integer
 	 */
-	@Override
 	@Produces
 	@ApplicationProperty(name = "", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.INTEGER)
 	public Integer getPropertyAsInteger(final InjectionPoint injectionPoint) {
@@ -82,7 +81,6 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 	 * @param injectionPoint
 	 * @return Long
 	 */
-	@Override
 	@Produces
 	@ApplicationProperty(name = "", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.LONG)
 	public Long getPropertyAsLong(InjectionPoint injectionPoint) {
@@ -95,7 +93,6 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 	 * @param injectionPoint
 	 * @return Double
 	 */
-	@Override
 	@Produces
 	@ApplicationProperty(name = "", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.DOUBLE)
 	public Double getPropertyAsDouble(InjectionPoint injectionPoint) {

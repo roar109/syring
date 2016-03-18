@@ -5,6 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.github.roar109.syring.resolver.PropertyResolver;
 import com.github.roar109.syring.resolver.util.LoggerHelper;
 
+/**
+ * @author hector.mendoza
+ * */
 public final class PropertyResolverFactory {
 
 	private static final PropertyResolverFactory instance = new PropertyResolverFactory();
