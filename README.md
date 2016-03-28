@@ -52,7 +52,7 @@ When you have something like this in your project properties file `data.jndi.url
 
 ### Integer, Long and Double values
 
-By default the injection of values are Strings, however in some cases we need to insert numbers, so we add a `valueType` to the annotation since 1.1.0 version, an example of use is:
+By default the injection of values are Strings, however in some cases we need to insert numbers, so we add a `valueType` to the annotation, an example of use is:
 
     @Inject
     @ApplicationProperty (name = "example.int.property", type = ApplicationProperty.Types.FILE, valueType=ApplicationProperty.ValueType.INTEGER)
