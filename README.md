@@ -1,5 +1,3 @@
-[![Build Status](https://drone.io/github.com/roar109/syring/status.png)](#)
-
 ### How to include it in your project
 If you are using Maven as your dependency manager you can include this dependency:
 
@@ -28,7 +26,7 @@ Also, we need to create a file `prop-config.properties` in case you will use FIL
 For a reference implementation you may check [this git project:](https://github.com/roar109/syring-example) 
 
 
-### System properties
+### System/Env properties
     @Inject @ApplicationProperty(name="service.endpoint.jndi.location", type=ApplicationProperty.Types.SYSTEM)
     private String jndiUrl;
 
