@@ -49,7 +49,8 @@ public class ApplicationPropertyProducerImpl implements ApplicationPropertyProdu
 		if (ApplicationProperty.Types.FILE == propertyType) {
 			value = propertyFileResolver.getProperty(propertyName, cl);
 		} else if (ApplicationProperty.Types.SYSTEM == propertyType) {
-			value = System.getProperty(propertyName);
+			final String propFromEnv = System.getenv(propertyName);
+			value = propFromEnv == null ? System.getProperty(propertyName): propFromEnv;
 		} else if (ApplicationProperty.Types.JNDI == propertyType) {
 			value = jndiPropertyResolver.getProperty(propertyName, cl);
 		} else if (ApplicationProperty.Types.FILE_JNDI == propertyType) {
