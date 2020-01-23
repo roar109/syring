@@ -23,4 +23,4 @@ jobs:
             - ~/.m2
           key: general-dependencies
 
-      - run: mvn clean package
+      - run: mvn clean install
